@@ -27,13 +27,34 @@ red = (255,0,0)
 dark_red = (150,0,0)
 white = (255,255,255)
 # Set fonts
+font = pygame.font.SysFont("gabriola", 48)
 
 # Set text
+title_text = font.render("~~snake~~", True, green, dark_red)
+title_rect = title_text.get_rect()
+title_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
 
+score_text = font.render("Score: 0", True, green, dark_red)
+score_rect = score_text.get_rect()
+score_rect.topleft = (WINDOW_WIDTH//10, WINDOW_HEIGHT//10)
+
+game_over_text = font.render("Game Over", True, red, dark_red)
+game_over_rect = game_over_text.get_rect()
+game_over_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
+
+continue_text = font.render("Continue", True, red, dark_green)
+continue_rect = continue_text.get_rect()
+continue_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2 + 64)
 # Set sounds and music
+pick_up_sound = pygame.mixer.Sound("pick_up_sound.wav")
 
 # Set images (in this case, use simple rects...so just create their coordinates)
 # For a rectangle you need (top-left x, top-left y, width, height)
+apple_coord = (500,500, snake_size, snake_size)
+apple_rect = pygame.draw.rect(display_surface, red, apple_coord)
+
+head_coord = (500,500, snake_size, snake_size)
+head_rect = pygame.draw.rect(display_surface, green, head_coord)
 
 # The main game loop
 running = True
